@@ -1,0 +1,69 @@
+class Solution:
+    def longestRepeating(self, s: str, queryCharacters: str, queryIndices: list[int]) -> list[int]:
+        n = len(s)
+        
+        # Segment Tree arrays (4 * n elements)
+        max_len = [1] * (4 * n)
+        prefix_len = [1] * (4 * n)
+        suffix_len = [1] * (4 * n)
+        total_len = [1] * (4 * n)
+        left_char = [''] * (4 * n)
+        right_char = [''] * (4 * n)
+        
+        def pushup(idx: int, l_idx: int, r_idx: int):
+            left_char[idx] = left_char[l_idx]
+            right_char[idx] = right_char[r_idx]
+            total_len[idx] = total_len[l_idx] + total_len[r_idx]
+            
+            # Base max length from children
+            max_len[idx] = max(max_len[l_idx], max_len[r_idx])
+            
+            # Merge prefix length
+            prefix_len[idx] = prefix_len[l_idx]
+            if prefix_len[l_idx] == total_len[l_idx] and right_char[l_idx] == left_char[r_idx]:
+                prefix_len[idx] += prefix_len[r_idx]
+                
+            # Merge suffix length
+            suffix_len[idx] = suffix_len[r_idx]
+            if suffix_len[r_idx] == total_len[r_idx] and left_char[r_idx] == right_char[l_idx]:
+                suffix_len[idx] += suffix_len[l_idx]
+                
+            # Boundary bridge merge
+            if right_char[l_idx] == left_char[r_idx]:
+                max_len[idx] = max(max_len[idx], suffix_len[l_idx] + prefix_len[r_idx])
+
+        def build(idx: int, l: int, r: int):
+            if l == r:
+                left_char[idx] = s[l]
+                right_char[idx] = s[l]
+                return
+            
+            mid = (l + r) // 2
+            build(2 * idx, l, mid)
+            build(2 * idx + 1, mid + 1, r)
+            pushup(idx, 2 * idx, 2 * idx + 1)
+
+        def update(idx: int, l: int, r: int, target: int, ch: str):
+            if l == r:
+                left_char[idx] = ch
+                right_char[idx] = ch
+                return
+            
+            mid = (l + r) // 2
+            if target <= mid:
+                update(2 * idx, l, mid, target, ch)
+            else:
+                update(2 * idx + 1, mid + 1, r, target, ch)
+                
+            pushup(idx, 2 * idx, 2 * idx + 1)
+
+        # Build tree initially
+        build(1, 0, n - 1)
+        
+        # Process each query
+        ans = []
+        for i in range(len(queryIndices)):
+            update(1, 0, n - 1, queryIndices[i], queryCharacters[i])
+            ans.append(max_len[1])
+            
+        return ans

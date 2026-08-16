@@ -1,0 +1,23 @@
+
+class Solution(object):
+    def maximumProduct(self, nums):
+        l1=l2=l3=float('-inf')
+        s1=s2=float('inf')
+        for a in nums:
+            
+            if a>l1:
+                l3=l2
+                l2=l1
+                l1=a
+            elif a>l2:
+                    l3=l2
+                    l2=a
+            elif a>l3:
+                    l3=a
+            if a < s1:
+                s2 = s1
+                s1 = a
+            elif a < s2:
+                s2 = a
+        
+        return max(l1*l2*l3,l1*s1*s2)

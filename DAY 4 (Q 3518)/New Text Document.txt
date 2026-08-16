@@ -1,0 +1,52 @@
+from collections import Counter
+import math
+
+class Solution:
+    def smallestPalindrome(self, s: str, k: int) -> str:
+        freq = Counter(s)
+
+        # Separate the odd middle character (if string length is odd)
+        mid = ""
+        half = {}
+        for ch in sorted(freq.keys()):
+            if freq[ch] % 2 != 0:
+                mid = ch
+            half[ch] = freq[ch] // 2
+
+        # Fast permutation counter using C-implemented math.comb with early exit
+        def count_perm(cnt):
+            total = sum(cnt.values())
+            res = 1
+            for v in cnt.values():
+                if v > 0:
+                    res *= math.comb(total, v)
+                    if res >= k:  # Cap early once we meet or exceed k
+                        return k
+                    total -= v
+            return res
+    
+        # Check if the k-th permutation exists
+        if count_perm(half) < k:
+            return ""
+
+        left = []
+        half_len = sum(half.values())
+
+        # Greedily pick characters from 'a' to 'z'
+        for _ in range(half_len):
+            for ch in sorted(half.keys()):
+                if half[ch] == 0:
+                    continue
+
+                half[ch] -= 1
+                ways = count_perm(half)
+
+                if ways >= k:
+                    left.append(ch)
+                    break
+                else:
+                    k -= ways
+                    half[ch] += 1  # Backtrack
+
+        left_str = "".join(left)
+        return left_str + mid + left_str[::-1]
