@@ -66,11 +66,11 @@ The goal isn't just to collect solved problems — it's to become better at \*\*
 
 
 
-\*\*Progress:\*\* `0 / 100` days completed
+\*\*Progress:\*\* `21 / 100` days completed
 
 
 
-`░░░░░░░░░░░░░░░░░░░░ 0%`
+`░░░░░░░░░░░░░░░░░░░░ 21%`
 
 
 
