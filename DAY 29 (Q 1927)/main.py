@@ -13,4 +13,4 @@ class Solution(object):
         if (q1 + q2) % 2 != 0:
             return True
         
-        return (sum1 - sum2) * 2 != (q2 - q1) * 9                
+        return (sum1 - sum2)  != (q2 - q1) * 4.5
