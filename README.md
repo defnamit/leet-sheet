@@ -10,7 +10,7 @@ Welcome to my \*\*100 Days, 100 LeetCode Questions\*\* challenge! 🧠💻
 
 
 
-For the next \*\*100 days\*\*, I’m solving \*\*at least one LeetCode problem every day\*\*, documenting my solutions, learning from mistakes, and building consistency along the way.
+For the next \*\*100 days\*\*, I’m solving \*\*at least one LeetCode problem every day\*\*, documenting my solutions, learning from mistakes, and building consistency along the way, and will try my best to explain my approach and my mistakes I did , so as to understand better
 
 
 
