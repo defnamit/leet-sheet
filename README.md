@@ -1,4 +1,4 @@
-# **# 🚀 100 Days • 100 LeetCode Problems**
+# **# 🚀 100 Days-100 LeetCode Problems-100 Explanations**
 
 
 
@@ -6,7 +6,7 @@
 
 
 
-Welcome to my \*\*100 Days, 100 LeetCode Questions\*\* challenge! 🧠💻
+Welcome to my \*\*100 Days, 100 LeetCode Questions, 100 Explanations\*\* challenge! 🧠💻
 
 
 
