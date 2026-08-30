@@ -31,8 +31,8 @@ As to draw our cases we compulsorily need to know that which number is closer fr
 Talking about cases , we will have 3 major cases that can be concluded to have an appropriate output.
 
 
-CASE 1 = The both numbers would be near from the start and the back of the array
-CASE 2 = Both the numbers would be near from the start of the array**
+CASE 1 = The both numbers would be near from the start and the back of the array.
+CASE 2 = Both the numbers would be near from the start of the array.
 CASE 3 = Both the numbers would be near from the end of the array.
 
 Using min operator and determining which case will have minimum number of deletion , we will solve this ques.**
