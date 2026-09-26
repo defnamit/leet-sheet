@@ -1,29 +1,44 @@
 class Solution:
     def evaluate(self, s: str, knowledge: list[list[str]]) -> str:
+        
+        i=0
+        d={}
 
-        mp = {}
+        for key,val in knowledge:
+            d[key]=val
+    
+        n=len(s)
+        string=""
+        result=""
 
-        for key, value in knowledge:
-            mp[key] = value
+        while(i!=n):
+            if(s[i]=="("):
+                i+=1
 
-        ans = ""
-        i = 0
+                while(s[i]!=")"):
+                    string+=s[i]
+                    i+=1
+                i+=1
 
-        while i < len(s):
+                if string in d:
+                    result+=d[string]
+                else:
+                    result+="?"
 
-            if s[i] == '(':
-                i += 1
-                key = ""
-
-                while s[i] != ')':
-                    key += s[i]
-                    i += 1
-
-                ans += mp.get(key, "?")
-                i += 1
+                string=""
 
             else:
-                ans += s[i]
-                i += 1
+                while(i<n and s[i]!="("):
+                    result+=s[i]
+                    i+=1
 
-        return ans
+        return result
+
+        
+
+
+            
+                
+                
+                    
+        
