@@ -1,11 +1,10 @@
 class Solution:
     def numDistinct(self, s: str, t: str) -> int:
-        slen, tlen = len(s), len(t)
-        dp = [0] * tlen + [1]
-        for i in range(slen - 1, -1, -1):
-            start_j = max(0, tlen - slen + i)
-            end_j = min(tlen - 1, i)
-            for j in range(start_j, end_j + 1):
-                if s[i] == t[j]:
-                    dp[j] += dp[j + 1]
-        return dp[0]
+        n, m = len(s), len(t)
+        if n < m: return 0 
+        f = [1] + [0]*m 
+        for i, x in enumerate(s):
+            for j in range(min(i, m - 1), max(m - n + i, 0) - 1, -1):
+                if x == t[j]:
+                    f[j + 1] += f[j] 
+        return f[m] 
