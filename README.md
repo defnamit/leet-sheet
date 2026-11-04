@@ -1,5 +1,8 @@
 # **# 🚀 100 Days-100 LeetCode Problems-100 Explanations**
 
+COMPLETED -
+![Streak](screenshot/streak.png)
+
 
 
 > \*\*One day. One problem. One step closer to becoming a better problem solver.\*\*
@@ -66,11 +69,11 @@ The goal isn't just to collect solved problems — it's to become better at \*\*
 
 
 
-\*\*Progress:\*\* `93 / 100` days completed
+\*\*Progress:\*\* `100 / 100` days completed
 
 
 
-`░░░░░░░░░░░░░░░░░░░░ 93%`
+`░░░░░░░░░░░░░░░░░░░░ 100%`
 
 
 
